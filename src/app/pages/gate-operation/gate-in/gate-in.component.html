@@ -6,6 +6,7 @@
         <div class="form-group">
           <label>Operation Type:</label>
           <div>
+            
             <label *ngFor="let operationsName of operationsNames" class="radio-container">
               {{operationsName.label}}
               <input type="radio" formControlName="operationName" [value]="operationsName.value">
