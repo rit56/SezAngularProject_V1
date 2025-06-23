@@ -1,5 +1,5 @@
 <div class="form-group mb-0 position-relative mt-3">
-  <!-- <input #searchInput (input)="search(searchInput.value)" placeholder="Search by Container No" type="text">
+  <!--   <input #searchInput (input)="search(searchInput.value)" placeholder="Search by Container No" type="text">
   <span class="input_icon"><i class="fa fa-search" aria-hidden="true" onclick="SearchContainer()"></i></span> -->
 </div>
 <app-table [headers]="headers" [idKey]="idKey" [slNumberStart]="((searchCriteria$ | async)?.page! - 1) * (searchCriteria$ | async)?.size!" [isFetching]="isFetching()" [records]="records()"></app-table>
