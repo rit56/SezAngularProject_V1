@@ -1,0 +1,80 @@
+<div class="card">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Port Name:</label>
+          <input formControlName="portName" placeholder="Enter Port Name" type="text">
+          <ng-container *ngIf="hasError('portName')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Port Alias:</label>
+          <input formControlName="portAlias" placeholder="Enter Port Alias" type="text">
+          <ng-container *ngIf="hasError('portAlias')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>*Country Name:</label>
+          <select formControlName="country" class="dropdown">
+            <option value="">---Select---</option>
+            <option *ngFor="let country of countryList()" [value]="country.id">{{country.name}}
+            </option>
+          </select>
+          <ng-container *ngIf="hasError('country')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>*State Name:</label>
+          <select formControlName="state" class="dropdown">
+            <option value="">---Select---</option>
+            <option *ngFor="let state of stateList()" [value]="state.id">{{state.name}}
+            </option>
+          </select>
+          <ng-container *ngIf="hasError('state')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-sm-6 d-flex align-items-center">
+        <div class="form-group">
+          <div class="checkbox-container">
+            <input id="pod" formControlName="pod" hidden type="checkbox">
+            <label for="pod">
+              <i class="square"></i>
+              <span>* POD/POA</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <div class="d-flex justify-content-left gap-2">
+      <ng-container *ngIf="isViewMode(); else formActionButton">
+        <button type="button" class="btn btn-primary form-btn" (click)="setEditMode()">Edit</button>
+      </ng-container>
+      <ng-template #formActionButton>
+        <button [disabled]="isSaving()" type="button" class="btn btn-primary form-btn" (click)="submit()">Save</button>
+      </ng-template>
+      <button type="button" class="btn btn-outline-primary form-btn" (click)="reset()">Reset</button>
+    </div>
+  </form>
+
+  <div class="mt-2 d-flex flex-column gap-2">
+    <app-data-table [headers]="headers" [url]="apiUrls.LIST"></app-data-table>
+  </div>
+</div>

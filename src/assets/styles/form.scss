@@ -1,0 +1,288 @@
+$radio-size: 20px;
+$dot-size: 8px;
+$checked-bg: #2196f3;
+$dot-color: white;
+$disabled-color: #ddd;
+
+label {
+  font-size: 9.75px;
+  color: #556b82;
+  font-weight: bold;
+}
+input,
+select,
+textarea,
+{
+  font-size: 0.75rem;
+  color: #1c1c1c;
+  border: 1px solid $disabled-color;
+  border-radius: 4px;
+  padding: 6px 8px;
+  width: 100%;
+  &:hover,
+  &:focus {
+    outline: 0 !important;
+    border: 1px solid $primary;
+  }
+}
+.input_icon {
+  position: absolute;
+  right: 7px;
+  top: 0;
+  font-size: 16px;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+input[disabled],
+select[disabled],
+input[readonly],
+textarea[disabled],
+fieldset[disabled] input {
+  background-color: $disabled-color;
+  opacity: 1;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-top: 14px;
+
+  label{
+    cursor: pointer;
+    user-select: none;
+  }
+
+  i {
+    font-style: normal;
+    font-family: 'FontAwesome';
+    font-size: 16px !important;
+  }
+
+  span {
+    margin: 0 5px;
+    position: relative;
+    bottom: 2.5px;
+  }
+
+  input[type="checkbox"] {
+    &:focus ~ label i {
+      color: $primary;
+    }
+
+    ~ label i.square:before {
+      content: '\f096';
+      color: $primary;
+    }
+
+    &:checked ~ label i.square:before {
+      content: '\f046';
+      color: $primary;
+    }
+
+    &:disabled ~ label {
+      cursor: not-allowed;
+
+      i.square:before {
+        color: #427cac6e;
+      }
+    }
+  }
+}
+
+.radio-container {
+  display: inline-block;
+  position: relative;
+  padding-left: calc(#{$radio-size} + 8px); // space for radio + gap
+  margin-right: 2rem;
+  line-height: 20px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    display: none;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $radio-size;
+    height: $radio-size;
+    border: 2px solid $primary;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+
+    &::after {
+      content: "";
+      display: none;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: $dot-size;
+      height: $dot-size;
+      background-color: $dot-color;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked + .checkmark {
+    background-color: $checked-bg;
+    &::after {
+      display: block;
+    }
+  }
+
+  input:disabled + .checkmark {
+    border-color: $disabled-color;
+    opacity: 0.6;
+
+    &::after {
+      background-color: $disabled-color;
+      opacity: 0.6;
+    }
+  }
+
+  input:disabled ~ * {
+    cursor: not-allowed;
+    color: $disabled-color;
+    opacity: 0.6;
+  }
+}
+
+.form-group {
+  position: relative;
+  bottom: 7px;
+  .ng-touched.ng-invalid {
+    border: 1px solid #dc3545;
+  }
+  .error {
+    color: #dc3545;
+    font-size: 10px;
+    position: relative;
+    bottom: 4px;
+    font-weight: 600;
+  }
+}
+
+.bordered-container {
+  margin-top: 6px;
+  border: 1px solid $primary;
+  padding: 10px;
+
+  p.title {
+    background: $primary;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+}
+
+.custom-auto-complete {
+  width: 100%;
+  position: relative;
+}
+.custom-auto-complete.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.custom-auto-complete.option-list {
+  background: white;
+  position: absolute;
+  width: 100%;
+  z-index: 10000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  max-height: 340px;
+  overflow: auto;
+  li {
+    list-style: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    &:hover {
+      background: $primary;
+      color: white;
+    }
+    &.selected {
+      background: $primary;
+      color: white;
+    }
+  }
+}
+
+form table {
+  th, td {
+    min-width: 60px;
+  }
+  .form-group {
+    min-width: 200px;
+    textarea {
+      top: 3px;
+      position: relative;
+    }
+  }
+}
+ngb-modal-window {
+  background: rgba(0, 0, 0, 0.75);
+
+  .modal-dialog {
+    margin-top: 100px;
+
+    &.auto-complete-modal {
+      width: 404px;
+
+      .modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        .option-list {
+          margin-top: 10px;
+          padding: 10px 0px;
+          max-height: 280px;
+          overflow: auto;
+          border: 1px solid #c7c7cc;
+
+          li {
+            list-style: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 13px;
+
+            &:hover, &.selected {
+              background: $primary;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.secondary-form-container{
+  border: 1px solid $primary;
+  padding: 10px;
+}
+
+form {
+  .table-container {
+    margin-bottom: .5rem;
+    .no-records {
+      height: max-content;
+    }
+    .data-table-no-record-img {
+      margin: 0;
+    }
+  }
+}
