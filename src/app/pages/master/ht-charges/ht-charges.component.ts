@@ -27,7 +27,7 @@ export class HtChargesComponent {
     utilService = inject(UtilService);
     toasterService = inject(ToastService);
   
-    readonly headers = DATA_TABLE_HEADERS.MASTER.HT_CHARGES.HANDLING
+    readonly headers = DATA_TABLE_HEADERS.MASTER.HT_CHARGES.LANDING
     readonly apiUrls = API.MASTER.HT_CHARGES;
   readonly sizes = HT_CHARGES_DATA.sizes;
     form!: FormGroup;
@@ -35,7 +35,7 @@ export class HtChargesComponent {
     isViewMode = signal(false);
     isSaving = signal(false);
     operationMap = signal(new Map<string, string>());
-  sacCodeId = '';
+  public sacCodeId = '';
     @ViewChild(DataTableComponent) table!: DataTableComponent;
   
     constructor() {
@@ -44,11 +44,24 @@ export class HtChargesComponent {
       this.makeForm();
     }
   getSacCode(){
-this.sacCodeId = this.form.controls['chargeId'].value;
-    window.alert(this.form.controls['chargeId'].value)
+var sacId = this.form.controls['operationId'].value;
+if(sacId !== null && !this.isViewMode){
+  this.apiService.get(API.MASTER.SAC.SACCODEBYOPERATION + sacId).subscribe({
+        next: (response: any) => {
+          if(response.status)
+         {
+          //this.sacCodeId = response.data.sacCode;
+          this.form.controls['sacCodeId'].setValue(parseInt(response.data.sacCode)) ;
+         }
+         
+         
+        }
+      })
+}
+   
   }
     getOperationList() {
-      this.apiService.get(API.MASTER.SAC.LIST).subscribe({
+      this.apiService.get(API.MASTER.OPERATION.LIST).subscribe({
         next: (response: any) => {
           this.operationList.set(response.data)
           const sacMap = new Map<string, string>();
@@ -62,22 +75,27 @@ this.sacCodeId = this.form.controls['chargeId'].value;
   
     makeForm() {
       this.form = new FormGroup({
-        handlingChargesID: new FormControl(0, []),
-        effectiveDate: new FormControl(null, []),
-        chargeId: new FormControl(null, []),
+        htChargesID: new FormControl(0, []),
         sacCodeId: new FormControl(null, []),
-         size: new FormControl("0", []),
+        operationId: new FormControl(null, []),
+        effectiveDate: new FormControl(null, []),
+        size: new FormControl("0", []),
         rate: new FormControl(null, []),
-       
+       createdBy:new FormControl(null, []),
+        createdOn: new FormControl(new Date(), []),
+       updatedBy:new FormControl(null, []),
+       updatedOn: new FormControl(null, []),
       })
     }
   
     edit(record: any) {
       this.patchForm({...record}, false);
+      
     }
   
     view(record: any) {
       this.patchForm({...record}, true);
+       this.isViewMode.set(false); // as edit off
     }
   
     patchForm(record: any, isViewMode: boolean) {
@@ -105,7 +123,7 @@ this.sacCodeId = this.form.controls['chargeId'].value;
         const data = this.makePayload();
         this.apiService.post(this.apiUrls.SAVE, data).subscribe({
           next:() => {
-            this.toasterService.showSuccess("Handling saved successfully");
+            this.toasterService.showSuccess("HT Charge saved successfully");
             this.table.reload();
             this.makeForm();
             this.isSaving.set(false);
@@ -127,15 +145,15 @@ this.sacCodeId = this.form.controls['chargeId'].value;
   
     setHeaderCallbacks() {
       this.headers.forEach(header => {
-        if(header.field === "edit") {
-          header.callback = this.edit.bind(this);
-        }
+        // if(header.field === "edit") {
+        //   header.callback = this.edit.bind(this);
+        // }
         if(header.field === "view") {
           header.callback = this.view.bind(this);
         }
-        if(header.field === "sacCode") {
-          header.valueGetter = this.getSacCodeBySacId.bind(this) ;
-        }
+        // if(header.field === "sacCode") {
+        //   header.valueGetter = this.getSacCodeBySacId.bind(this) ;
+        // }
       });
     }
   

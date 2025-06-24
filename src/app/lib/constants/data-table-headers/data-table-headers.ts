@@ -14,6 +14,7 @@ import {OverTimeHeaders} from "./over-time-header";
 import {ExaminationHeaders} from "./examination-header";
 import {CustomAppraisementHeaders} from "./custom-appraisement-header";
 import {CustomAppraisementIssuerHeaders} from "./custom-appraisement-issuer-header";
+import { HTChargesHeaders } from "./htchages.header";
 
 export const DATA_TABLE_HEADERS = {
   GATE_OPERATION: {
@@ -21,6 +22,7 @@ export const DATA_TABLE_HEADERS = {
   },
   MASTER: {
     HT_CHARGES: {
+      LANDING:HTChargesHeaders,
       UNLOADING_LOADING: UnloadingLoadingHeaders,
       HANDLING: HandlingHeaders,
     },

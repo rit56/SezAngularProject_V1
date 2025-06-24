@@ -25,14 +25,14 @@
         </ng-container>
       </div>
     </div>
-<div class="col-md-4 col-lg-3 col-sm-6">
-      <app-auto-complete keyName="operationDesc" keyValue="operationId" label="* Charge Name:" title="List of Charge Name" placeholder="Enter Charge Name" formControlName="chargeId"  [options]="getOperationList()" (ngModelChange)="getSacCode()"/>
+<div class="col-md-5 col-lg-4 col-sm-6">
+      <app-auto-complete keyName="operationDesc" keyValue="operationId" label="* Charge Name:" title="List of Charge Name" placeholder="Enter Charge Name" formControlName="operationId"  [options]="operationList()" (ngModelChange)="getSacCode()"/>
     </div>
 
     <!-- <div class="col-md-4 col-lg-3 col-sm-6">
       <app-auto-complete keyName="sacCode" keyValue="sacId" label="* SAC Code:" title="List of SAC Code" placeholder="Enter SAC" formControlName="sacCodeId" [options]="sacList()" />
     </div> -->
-    <div class="col-md-4 col-lg-3 col-sm-6">
+    <div class="col-md-3 col-lg-2 col-sm-6">
       <div class="form-group">
         <label>* Sac Code :</label>
         <input formControlName="sacCodeId" placeholder="Sac Code" [(ngModel)]="sacCodeId" type="text" readonly>

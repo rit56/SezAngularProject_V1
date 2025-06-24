@@ -2,8 +2,8 @@ export const API = {
   MASTER: {
     HT_CHARGES: {
       // UNLOADING_LOADING: {
-        LIST: "Sez/GetMststorageCharge",
-        SAVE: "Sez/AddEditMststorageCharge",
+        LIST: "HTCharges/GETHTChargeList",
+        SAVE: "HTCharges/AddHTCharge",
       // },
       HANDLING: {
         LIST: "Sez/GetAllHandlingCharges",
@@ -15,11 +15,12 @@ export const API = {
       },
     },
     SAC: {
-      LIST: "MasterData/GetMstOperation",
+      SACCODEBYOPERATION: "MasterData/GetMstSacByOperation?SacId=",
+      LIST: "",
       SAVE: "Sez/AddEditMstSac",
     },
     OPERATION: {
-      LIST: "Sez/GetMstOperation",
+      LIST: "MasterData/GetMstOperation",
       SAVE: "Sez/AddEditMstOperation",
     },
     PARTY: {
