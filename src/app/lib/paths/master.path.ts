@@ -13,9 +13,9 @@ export const MASTER_PATHS = {
   // SAC: "sac",
   CWC_CHARGES: {
     ROOT: "cwc-charges",
-    // ENTRY_FEES: "entry-fees",
-    // STORAGE_CHARGE: "storage-charge",
-    // INSURANCE_CHARGE: "insurance-charge",
+     GROUND_RENT_CHARGE: "ground-rent-charge",
+    REEFER_CHARGE: "reefer-charge",
+    MISC_CHARGE: "misc-charge",
     // RENT_OFFICE_SPACE: "rent-office-space",
     // RENT_TABLE_SPACE: "rent-table-space",
     // OVER_TIME: "over-time",

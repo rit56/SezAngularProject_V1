@@ -7,6 +7,7 @@ import {DataTableComponent} from "../../../../components";
 import {NgbInputDatepicker} from "@ng-bootstrap/ng-bootstrap";
 import {AutoCompleteComponent} from "../../../../components/auto-complete/auto-complete.component";
 import {ENTRY_FEE_DATA} from "./entry-fees-data";
+import { HT_CHARGES_DATA } from '../../ht-charges/ht-charges-data';
 
 @Component({
   selector: 'app-entry-fees',
@@ -24,7 +25,7 @@ export class EntryFeesComponent {
   readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES.ENTRY_FEES
   readonly apiUrls = API.MASTER.CWC_CHARGES.ENTRY_FEES;
   readonly operationTypes = ENTRY_FEE_DATA.operationTypes;
-
+ readonly sizes = HT_CHARGES_DATA.sizes;
   form!: FormGroup;
   sacList = signal<any[]>([]);
   isViewMode = signal(false);

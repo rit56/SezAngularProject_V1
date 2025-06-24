@@ -13,23 +13,23 @@ export const MASTER_ROUTES: Route[] = [
     data: { title: "CWC Charges" },
     children: [
       {
-        path: "", pathMatch: 'full', redirectTo: PATHS.MASTER.CWC_CHARGES.ROOT,
+        path: "", pathMatch: 'full', redirectTo: PATHS.MASTER.CWC_CHARGES.GROUND_RENT_CHARGE,
       },
       {
-        path: PATHS.MASTER.CWC_CHARGES.ROOT,
+        path: PATHS.MASTER.CWC_CHARGES.GROUND_RENT_CHARGE,
         loadComponent: () => import('../..').then((c) => c.EntryFeesComponent),
         data: { title: "CWC Charges" },
       },
-      // {
-      //   path: PATHS.MASTER.CWC_CHARGES.STORAGE_CHARGE,
-      //   loadComponent: () => import('../..').then((c) => c.StorageChargeComponent),
-      //   data: { title: "CWC Charges" },
-      // },
-      // {
-      //   path: PATHS.MASTER.CWC_CHARGES.INSURANCE_CHARGE,
-      //   loadComponent: () => import('../..').then((c) => c.InsuranceChargeComponent),
-      //   data: { title: "CWC Charges" },
-      // },
+      {
+        path: PATHS.MASTER.CWC_CHARGES.REEFER_CHARGE,
+        loadComponent: () => import('../..').then((c) => c.StorageChargeComponent),
+        data: { title: "CWC Charges" },
+      },
+      {
+        path: PATHS.MASTER.CWC_CHARGES.MISC_CHARGE,
+        loadComponent: () => import('../..').then((c) => c.InsuranceChargeComponent),
+        data: { title: "CWC Charges" },
+      },
       // {
       //   path: PATHS.MASTER.CWC_CHARGES.RENT_OFFICE_SPACE,
       //   loadComponent: () => import('../..').then((c) => c.RentOfficeSpaceComponent),

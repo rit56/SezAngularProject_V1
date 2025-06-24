@@ -1,13 +1,13 @@
-<!-- <div class="card">
-  <div class="custom-tab-container mb-3">
+ <div class="card">
+  <!--<div class="custom-tab-container mb-3">
     <ul class="custom-tabs">
       <li *ngFor="let tab of tabs" routerLinkActive="active" class="custom-tab">
         <a [routerLink]="[tab.path]">{{ tab.label }}</a>
       </li> 
     </ul>
   </div>
-  <router-outlet />
-</div> -->
+  <router-outlet /> -->
+
 <form [formGroup]="form">
   <div class="row">
 
@@ -46,7 +46,7 @@
       <div class="form-group">
         <label>* Size:</label>
         <select formControlName="size" class="dropdown">
-          <option value="0" >---Select---</option>
+         
           <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
           </option>
         </select>
@@ -83,4 +83,5 @@
 
 <div class="mt-2 d-flex flex-column gap-2">
   <app-data-table [headers]="headers" [url]="apiUrls.LIST"></app-data-table>
+</div>
 </div>

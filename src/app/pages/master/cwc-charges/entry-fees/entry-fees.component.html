@@ -16,18 +16,18 @@
       </div>
     </div>
 
-    <div class="col-md-4 col-lg-3 col-sm-6">
+    <div class="col-md-4 col-lg-2 col-sm-6">
       <app-auto-complete keyName="sacCode" keyValue="sacId" label="* SAC Code:" title="List of SAC Code" placeholder="Enter SAC" formControlName="sacCodeId" [options]="sacList()" />
     </div>
 
-    <div class="col-md-4 col-lg-3 col-sm-6">
+    <div class="col-md-4 col-lg-4 col-sm-6">
       <div class="form-group">
-        <label>* Operation Type:</label>
-        <select formControlName="operationType" class="dropdown">
-          <option value="">---Select---</option>
-          <option *ngFor="let operationType of operationTypes" [value]="operationType.value">{{operationType.label}}
-          </option>
-        </select>
+        <label>* Days Range:</label>
+      <div class="row">
+        <div class="col-md-5 pr-0"> <input formControlName="minimumRate" placeholder="Enter Range From" type="text"></div>
+        <div class="col-md-1 pr-0">-</div>
+        <div class="col-md-5 pr-0"> <input formControlName="minimumRate" placeholder="Enter Range To" type="text"></div>
+      </div>
         <ng-container *ngIf="hasError('operationType')">
           <span class="error">Required field</span>
         </ng-container>
@@ -36,8 +36,57 @@
 
     <div class="col-md-4 col-lg-3 col-sm-6">
       <div class="form-group">
-        <label>* Rate Per Packet:</label>
-        <input formControlName="ratePerPacket" placeholder="Enter Rate Per Packet" type="number">
+        <label>* Container Type:</label>
+        <div class="row">
+           <div class="col-md-6">
+         <select formControlName="size" class="dropdown">
+          
+          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          </option>
+        </select>
+        </div>
+         <div class="col-md-6">
+         <select formControlName="size" class="dropdown">
+         
+          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          </option>
+        </select>
+        </div>
+        </div>
+        <ng-container *ngIf="hasError('ratePerPacket')">
+          <span class="error">Required field</span>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-3 col-sm-6">
+      <div class="form-group">
+        <label>* Size:</label>
+       
+          
+         <select formControlName="size" class="dropdown">
+          
+          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          </option>
+        </select>
+       
+         
+        <ng-container *ngIf="hasError('ratePerPacket')">
+          <span class="error">Required field</span>
+        </ng-container>
+      </div>
+    </div>
+     <div class="col-md-4 col-lg-3 col-sm-6">
+      <div class="form-group">
+        <label>* FCL/LCL:</label>
+       
+          
+         <select formControlName="size" class="dropdown">
+    
+          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          </option>
+        </select>
+       
+         
         <ng-container *ngIf="hasError('ratePerPacket')">
           <span class="error">Required field</span>
         </ng-container>
@@ -46,19 +95,27 @@
 
     <div class="col-md-4 col-lg-3 col-sm-6">
       <div class="form-group">
-        <label>* Minimum Rate:</label>
-        <input formControlName="minimumRate" placeholder="Enter Minimum Rate" type="number">
+        <label>* Amount:</label>
+        <input formControlName="minimumRate" placeholder="Enter Minimum Rate" type="text">
         <ng-container *ngIf="hasError('minimumRate')">
           <span class="error">Required field</span>
         </ng-container>
       </div>
     </div>
 
-    <div class="col-md-4 col-lg-3 col-sm-6">
+       <div class="col-md-4 col-lg-3 col-sm-6">
       <div class="form-group">
-        <label>* Maximum Rate:</label>
-        <input formControlName="maximumRate" placeholder="Enter Maximum Rate" type="number">
-        <ng-container *ngIf="hasError('maximumRate')">
+        <label>* Operation Type:</label>
+       
+          
+         <select formControlName="size" class="dropdown">
+         
+          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          </option>
+        </select>
+       
+         
+        <ng-container *ngIf="hasError('ratePerPacket')">
           <span class="error">Required field</span>
         </ng-container>
       </div>
