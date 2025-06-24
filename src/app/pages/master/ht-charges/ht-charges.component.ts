@@ -12,7 +12,7 @@ import { HT_CHARGES_DATA } from './ht-charges-data';
 @Component({
   selector: 'app-ht-charges',
   standalone: true,
-  imports: [CommonModule, RouterLinkActive, RouterLink, RouterOutlet,CommonModule, AutoCompleteComponent, DataTableComponent, NgbInputDatepicker, ReactiveFormsModule],
+  imports: [CommonModule, RouterLinkActive, RouterLink, RouterOutlet, AutoCompleteComponent, DataTableComponent, NgbInputDatepicker, ReactiveFormsModule],
   templateUrl: './ht-charges.component.html',
   styleUrls: ['./ht-charges.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -45,7 +45,7 @@ export class HtChargesComponent {
     }
   getSacCode(){
 var sacId = this.form.controls['operationId'].value;
-if(sacId !== null && !this.isViewMode){
+if(sacId !== null ){
   this.apiService.get(API.MASTER.SAC.SACCODEBYOPERATION + sacId).subscribe({
         next: (response: any) => {
           if(response.status)
