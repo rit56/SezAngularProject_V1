@@ -1,6 +1,6 @@
 import { IDataTableHeader } from "../../models";
 
-export const InsuranceChargeHeaders: IDataTableHeader[] = [
+export const RefererChargeHeaders: IDataTableHeader[] = [
   {
     field: 'slNo',
     label: 'SL No',
@@ -10,13 +10,13 @@ export const InsuranceChargeHeaders: IDataTableHeader[] = [
     class: 'text-center',
   },
 
-  {
-    field: 'edit',
-    label: 'Edit',
-    type: 'icon',
-    icon: 'fa fa-pencil',
-    class: 'text-center',
-  },
+  // {
+  //   field: 'edit',
+  //   label: 'Edit',
+  //   type: 'icon',
+  //   icon: 'fa fa-pencil',
+  //   class: 'text-center',
+  // },
   {
     field: 'view',
     label: 'View',
@@ -33,6 +33,16 @@ export const InsuranceChargeHeaders: IDataTableHeader[] = [
     field: 'sacCode',
     label: 'Sac Code',
     type: 'string',
+  },
+  {
+    field: 'hours',
+    label: 'Hour',
+    type: 'string',
+  },
+  {
+    field: 'size',
+    label: 'Size',
+    type: 'price',
   },
   {
     field: 'rate',

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, signal, ViewChild} from '@an
 import { CommonModule } from '@angular/common';
 import {ApiService, ToastService, UtilService} from "../../../../services";
 import {API, DATA_TABLE_HEADERS} from "../../../../lib";
-import {ENTRY_FEE_DATA} from "../../cwc-charges/entry-fees/entry-fees-data";
+import {ENTRY_FEE_DATA} from "../../cwc-charges/ground-rent-charge/ground-rent-charge-data";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {DataTableComponent} from "../../../../components";
 import {AutoCompleteComponent} from "../../../../components/auto-complete/auto-complete.component";

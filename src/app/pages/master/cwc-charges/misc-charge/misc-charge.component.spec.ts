@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MiscChargeComponent } from './misc-charge.component';
+import { RentOfficeSpaceComponent } from './misc-charge.component';
 
-describe('MiscChargeComponent', () => {
-  let component: MiscChargeComponent;
-  let fixture: ComponentFixture<MiscChargeComponent>;
+describe('RentOfficeSpaceComponent', () => {
+  let component: RentOfficeSpaceComponent;
+  let fixture: ComponentFixture<RentOfficeSpaceComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MiscChargeComponent]
+      imports: [RentOfficeSpaceComponent]
     });
-    fixture = TestBed.createComponent(MiscChargeComponent);
+    fixture = TestBed.createComponent(RentOfficeSpaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

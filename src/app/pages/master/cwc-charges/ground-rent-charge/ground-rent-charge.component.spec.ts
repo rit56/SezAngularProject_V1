@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EntryFeesComponent } from './entry-fees.component';
+import { EntryFeesComponent } from './ground-rent-charge.component';
 
 describe('EntryFeesComponent', () => {
   let component: EntryFeesComponent;

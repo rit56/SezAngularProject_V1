@@ -16,7 +16,7 @@ export const API = {
     },
     SAC: {
       SACCODEBYOPERATION: "MasterData/GetMstSacByOperation?SacId=",
-      LIST: "",
+      LIST: "MasterData/GetMstSacAll",
       SAVE: "Sez/AddEditMstSac",
     },
     OPERATION: {
@@ -46,13 +46,13 @@ export const API = {
         LIST: "CWCCharges/GETGroundRentChargeList",
         SAVE: "CWCCharges/AddGroundRentCharge",
       },
-      INSURANCE_CHARGE: {
-        LIST: "Sez/GetMstInsurance",
-        SAVE: "Sez/AddEditMstInsurance",
+      REFERER_CHARGE: {
+        LIST: "CWCCharges/GETReferChargeList",
+        SAVE: "CWCCharges/AddReferCharge",
       },
-      OVER_TIME: {
-        LIST: "Sez/GetOverTimeCharge",
-        SAVE: "Sez/AddEditOverTimeCharge",
+      MISC_CHARGE: {
+        LIST: "CWCCharges/GETMISCChargeList",
+        SAVE: "CWCCharges/AddMISCCharge",
       },
       EXAMINATION: {
         LIST: "Sez/GetExaminationCharge",

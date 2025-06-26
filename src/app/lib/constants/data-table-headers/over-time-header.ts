@@ -10,13 +10,13 @@ export const OverTimeHeaders: IDataTableHeader[] = [
     class: 'text-center',
   },
 
-  {
-    field: 'edit',
-    label: 'Edit',
-    type: 'icon',
-    icon: 'fa fa-pencil',
-    class: 'text-center',
-  },
+  // {
+  //   field: 'edit',
+  //   label: 'Edit',
+  //   type: 'icon',
+  //   icon: 'fa fa-pencil',
+  //   class: 'text-center',
+  // },
   {
     field: 'view',
     label: 'View',
@@ -36,8 +36,13 @@ export const OverTimeHeaders: IDataTableHeader[] = [
   },
   {
     field: 'operationType',
-    label: 'Operation Type',
+    label: 'Charge Name',
     type: 'string',
+  },
+  {
+    field: 'size',
+    label: 'Size',
+    type: 'price',
   },
   {
     field: 'rate',

@@ -6,15 +6,15 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {DataTableComponent} from "../../../../components";
 import {NgbInputDatepicker} from "@ng-bootstrap/ng-bootstrap";
 import {AutoCompleteComponent} from "../../../../components/auto-complete/auto-complete.component";
-import {ENTRY_FEE_DATA} from "./entry-fees-data";
+import {ENTRY_FEE_DATA} from "./ground-rent-charge-data";
 import { HT_CHARGES_DATA } from '../../ht-charges/ht-charges-data';
 
 @Component({
   selector: 'app-entry-fees',
   standalone: true,
   imports: [CommonModule, DataTableComponent, NgbInputDatepicker, ReactiveFormsModule, AutoCompleteComponent],
-  templateUrl: './entry-fees.component.html',
-  styleUrls: ['./entry-fees.component.scss'],
+  templateUrl: './ground-rent-charge.component.html',
+  styleUrls: ['./ground-rent-charge.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EntryFeesComponent {
@@ -60,8 +60,8 @@ export class EntryFeesComponent {
     this.form = new FormGroup({
       groundRentId: new FormControl(0, []),
       effectiveDate: new FormControl(null, []),
-      sacId: new FormControl(996719, []),
-      daysRangeFrom: new FormControl("", []),
+      sacCodeId: new FormControl(null, []),
+      daysRangeFrom: new FormControl(null, []),
       daysRangeTo: new FormControl(null, []),
       containerType: new FormControl(null, []),
       commodityType: new FormControl(null, []),
@@ -82,10 +82,23 @@ export class EntryFeesComponent {
 
   view(record: any) {
     this.patchForm({...record}, true);
+    this.isViewMode.set(false);
   }
 
   patchForm(record: any, isViewMode: boolean) {
     record.effectiveDate = this.utilService.getNgbDateObject(record.effectiveDate);
+    //record.sacId = 996719;
+    record.daysRangeFrom = record.daysRange.split('-')[0];
+     record.daysRangeTo = record.daysRange.split('-')[1];
+       record.containerType = record.containerType == "Empty Container"  ? 1 : 2;
+        record.commodityType = record.commodityType == "HAZ"  ? 1 : 2;
+         record.fclLcl = record.fclLcl == "FCL"  ? 1 : 2;
+          record.operationType = record.operationType == "Import"  ? 1 : record.operationType == "Export"? 2 
+                                :record.operationType == "Empty Import" ? 3 :record.operationType == "Empty Export"? 4 : 0;
+         record.size = parseInt(record.size) == 20  ? "20" : parseInt(record.size) == 40? "40" 
+                                :record.size == "40(AEO)" ? "40(AEO)" : 0;
+                                record.fclLcl = record.containerType == "FCL"  ? 1 : 2;
+         record.rentAmount = record.amount
     this.form.reset();
     this.form.patchValue(record);
     this.isViewMode = signal(isViewMode);
@@ -99,6 +112,7 @@ export class EntryFeesComponent {
 
   reset() {
     this.form.reset();
+    this.isViewMode.set(false);
     this.makeForm();
   }
 

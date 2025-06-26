@@ -9,13 +9,13 @@ export const GroundRentCharge: IDataTableHeader[] = [
     valueClass: 'text-center',
     class: 'text-center',
   },
-  {
-    field: 'edit',
-    label: 'Edit',
-    type: 'icon',
-    icon: 'fa fa-pencil',
-    class: 'text-center',
-  },
+  // {
+  //   field: 'edit',
+  //   label: 'Edit',
+  //   type: 'icon',
+  //   icon: 'fa fa-pencil',
+  //   class: 'text-center',
+  // },
   {
     field: 'view',
     label: 'View',
@@ -29,23 +29,29 @@ export const GroundRentCharge: IDataTableHeader[] = [
     type: 'date',
   },
   {
-    field: 'sacCode',
-    label: 'SAC Code',
+    field: 'containerType',
+    label: 'Container Type',
     type: 'string',
   },
   {
-    field: 'ratePerPacket',
-    label: 'Rate Per Packet',
-    type: 'price',
+    field: 'containerDetails',
+    label: 'Container Details',
+    type: 'string',
   },
   {
-    field: 'minimumRate',
-    label: 'Minimum Rate',
-    type: 'price',
+    field: 'operationType',
+    label: 'Operation Type',
+    type: 'string',
   },
   {
-    field: 'maximumRate',
-    label: 'Maximum Rate',
+    field: 'daysRange',
+    label: 'Days Range',
+    type: 'string',
+  },
+  {
+    field: 'amount',
+    label: 'Charges',
     type: 'price',
   },
+ 
 ];

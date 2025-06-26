@@ -17,57 +17,39 @@ import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./misc-charge.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MiscChargeComponent {
+export class RentOfficeSpaceComponent {
 apiService = inject(ApiService);
     utilService = inject(UtilService);
     toasterService = inject(ToastService);
   
-    readonly headers = DATA_TABLE_HEADERS.MASTER.HT_CHARGES.LANDING
-    readonly apiUrls = API.MASTER.HT_CHARGES;
+    readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES.MISC_CHARGE
+    readonly apiUrls = API.MASTER.CWC_CHARGES.MISC_CHARGE;
   readonly sizes = HT_CHARGES_DATA.sizes;
     form!: FormGroup;
-    operationList = signal<any[]>([]);
+     sacList = signal<any[]>([]);
     isViewMode = signal(false);
     isSaving = signal(false);
-    operationMap = signal(new Map<string, string>());
+    sacMap = signal(new Map<string, string>());
   public sacCodeId = '';
     @ViewChild(DataTableComponent) table!: DataTableComponent;
   
     constructor() {
-      this.getOperationList()
+        this.getSacList()
       this.setHeaderCallbacks();
       this.makeForm();
     }
-  getSacCode(){
-var sacId = this.form.controls['operationId'].value;
-if(sacId !== null ){
-  this.apiService.get(API.MASTER.SAC.SACCODEBYOPERATION + sacId).subscribe({
-        next: (response: any) => {
-          if(response.status)
-         {
-          //this.sacCodeId = response.data.sacCode;
-          this.form.controls['sacCodeId'].setValue(parseInt(response.data.sacCode)) ;
-         }
-         
-         
-        }
-      })
-}
-   
+ getSacList() {
+    this.apiService.get(API.MASTER.SAC.LIST).subscribe({
+      next: (response: any) => {
+        this.sacList.set(response.data)
+        const sacMap = new Map<string, string>();
+        response.data.forEach((sac: any) => {
+          sacMap.set(sac.sacId, sac.sacCode);
+        })
+        this.sacMap.set(sacMap);
+      }
+    })
   }
-    getOperationList() {
-      this.apiService.get(API.MASTER.OPERATION.LIST).subscribe({
-        next: (response: any) => {
-          this.operationList.set(response.data)
-          const sacMap = new Map<string, string>();
-          response.data.forEach((operation: any) => {
-            sacMap.set(operation.operationId, operation.operationDesc);
-          })
-          this.operationMap.set(sacMap);
-        }
-      })
-    }
-  
     makeForm() {
       this.form = new FormGroup({
         htChargesID: new FormControl(0, []),
@@ -153,6 +135,6 @@ if(sacId !== null ){
     }
   
     getSacCodeBySacId(record: any) {
-      return this.operationMap().get(record.operationId)!
+      return this.sacMap().get(record.sacCodeId)!
     }
 }

@@ -23,9 +23,9 @@
    <div class="col-md-4 col-lg-3 col-sm-6">
       <div class="form-group">
         <label>* Sac Code:</label>
-        <select formControlName="size" class="dropdown">
+        <select formControlName="sacCodeId" class="dropdown">
          
-          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          <option *ngFor="let size of sacList()" [value]="size.sacId">{{size.sacCode}}
           </option>
         </select>
         <ng-container *ngIf="hasError('size')">
@@ -35,11 +35,15 @@
     </div>
  
 
-  <div class="col-md-4 col-lg-3 col-sm-6">
+   <div class="col-md-4 col-lg-3 col-sm-6">
       <div class="form-group">
-        <label>* Hour :</label>
-        <input formControlName="rate" placeholder="Enter Rate" type="text">
-        <ng-container *ngIf="hasError('rate')">
+        <label>* Charge Name:</label>
+        <select formControlName="size" class="dropdown">
+         
+          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          </option>
+        </select>
+        <ng-container *ngIf="hasError('size')">
           <span class="error">Required field</span>
         </ng-container>
       </div>

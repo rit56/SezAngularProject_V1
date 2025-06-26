@@ -27,7 +27,7 @@ export const MASTER_ROUTES: Route[] = [
       },
       {
         path: PATHS.MASTER.CWC_CHARGES.MISC_CHARGE,
-        loadComponent: () => import('../..').then((c) => c.MiscChargeComponent),
+        loadComponent: () => import('../..').then((c)=>c.RentOfficeSpaceComponent),
         data: { title: "CWC Charges" },
       },
       // {

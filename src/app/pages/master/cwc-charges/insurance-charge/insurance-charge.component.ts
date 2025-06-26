@@ -20,8 +20,8 @@ export class InsuranceChargeComponent {
   utilService = inject(UtilService);
   toasterService = inject(ToastService);
 
-  readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES.INSURANCE_CHARGE
-  readonly apiUrls = API.MASTER.CWC_CHARGES.INSURANCE_CHARGE;
+  readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES
+  readonly apiUrls = API.MASTER.CWC_CHARGES;
 
   form!: FormGroup;
   sacList = signal<any[]>([]);
@@ -90,7 +90,7 @@ export class InsuranceChargeComponent {
     if (this.form.valid) {
       this.isSaving.set(true);
       const data = this.makePayload();
-      this.apiService.post(this.apiUrls.SAVE, data).subscribe({
+      this.apiService.post(this.apiUrls.EXAMINATION.LIST, data).subscribe({
         next:() => {
           this.toasterService.showSuccess("Insurance charge saved successfully");
           this.table.reload();
@@ -113,17 +113,17 @@ export class InsuranceChargeComponent {
   }
 
   setHeaderCallbacks() {
-    this.headers.forEach(header => {
-      if(header.field === "edit") {
-        header.callback = this.edit.bind(this);
-      }
-      if(header.field === "view") {
-        header.callback = this.view.bind(this);
-      }
-      if(header.field === "sacCode") {
-        header.valueGetter = this.getSacCodeBySacId.bind(this) ;
-      }
-    });
+    // this.headers.forEach(header => {
+    //   if(header.field === "edit") {
+    //     header.callback = this.edit.bind(this);
+    //   }
+    //   if(header.field === "view") {
+    //     header.callback = this.view.bind(this);
+    //   }
+    //   if(header.field === "sacCode") {
+    //     header.valueGetter = this.getSacCodeBySacId.bind(this) ;
+    //   }
+    // });
   }
 
   getSacCodeBySacId(record: any) {

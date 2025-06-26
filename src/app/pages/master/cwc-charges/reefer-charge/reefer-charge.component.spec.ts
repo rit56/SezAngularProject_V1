@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StorageChargeComponent } from './storage-charge.component';
+import { StorageChargeComponent } from './reefer-charge.component';
 
 describe('StorageChargeComponent', () => {
   let component: StorageChargeComponent;

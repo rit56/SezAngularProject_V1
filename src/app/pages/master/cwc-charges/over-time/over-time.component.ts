@@ -21,8 +21,8 @@ export class OverTimeComponent {
   utilService = inject(UtilService);
   toasterService = inject(ToastService);
 
-  readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES.OVER_TIME
-  readonly apiUrls = API.MASTER.CWC_CHARGES.OVER_TIME;
+  readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES.MISC_CHARGE
+  readonly apiUrls = API.MASTER.CWC_CHARGES.MISC_CHARGE;
   readonly operationTypes = OVER_TIME_DATA.operationTypes;
 
   form!: FormGroup;
