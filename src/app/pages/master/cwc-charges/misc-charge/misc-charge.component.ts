@@ -27,14 +27,17 @@ apiService = inject(ApiService);
   readonly sizes = HT_CHARGES_DATA.sizes;
     form!: FormGroup;
      sacList = signal<any[]>([]);
+     operationList = signal<any[]>([]);
     isViewMode = signal(false);
     isSaving = signal(false);
     sacMap = signal(new Map<string, string>());
+    operationMap = signal(new Map<string, string>());
   public sacCodeId = '';
     @ViewChild(DataTableComponent) table!: DataTableComponent;
   
     constructor() {
-        this.getSacList()
+        this.getSacList();
+         this.getOperationList()
       this.setHeaderCallbacks();
       this.makeForm();
     }
@@ -50,6 +53,18 @@ apiService = inject(ApiService);
       }
     })
   }
+   getOperationList() {
+      this.apiService.get(API.MASTER.OPERATION.LIST).subscribe({
+        next: (response: any) => {
+          this.operationList.set(response.data)
+          const sacMap = new Map<string, string>();
+          response.data.forEach((operation: any) => {
+            sacMap.set(operation.operationId, operation.operationDesc);
+          })
+          this.operationMap.set(sacMap);
+        }
+      })
+    }
     makeForm() {
       this.form = new FormGroup({
         htChargesID: new FormControl(0, []),
@@ -78,6 +93,7 @@ apiService = inject(ApiService);
     patchForm(record: any, isViewMode: boolean) {
       record.effectiveDate = this.utilService.getNgbDateObject(record.effectiveDate);
       this.form.reset();
+      record.operationId = this.operationList().find(x=> x.operationDesc == record.operationDesc)?.operationId
       this.form.patchValue(record);
       this.isViewMode = signal(isViewMode);
       isViewMode ? this.form.disable() : this.form.enable();
@@ -128,13 +144,19 @@ apiService = inject(ApiService);
         if(header.field === "view") {
           header.callback = this.view.bind(this);
         }
-        // if(header.field === "sacCode") {
-        //   header.valueGetter = this.getSacCodeBySacId.bind(this) ;
+        if(header.field === "sacCode") {
+          header.valueGetter = this.getSacCodeBySacId.bind(this) ;
+        }
+        //  if(header.field === "operationDesc") {
+        //   header.valueGetter = this.getOperationById.bind(this) ;
         // }
       });
     }
   
     getSacCodeBySacId(record: any) {
       return this.sacMap().get(record.sacCodeId)!
+    }
+     getOperationById(record: any) {
+      return this.operationMap().get(record.operationId)!
     }
 }

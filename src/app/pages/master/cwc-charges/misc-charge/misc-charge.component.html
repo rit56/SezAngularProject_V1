@@ -38,9 +38,9 @@
    <div class="col-md-4 col-lg-3 col-sm-6">
       <div class="form-group">
         <label>* Charge Name:</label>
-        <select formControlName="size" class="dropdown">
+        <select formControlName="operationId" class="dropdown">
          
-          <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+          <option *ngFor="let size of operationList()" [value]="size.operationId">{{size.operationDesc}}
           </option>
         </select>
         <ng-container *ngIf="hasError('size')">

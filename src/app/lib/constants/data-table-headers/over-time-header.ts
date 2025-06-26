@@ -35,7 +35,7 @@ export const OverTimeHeaders: IDataTableHeader[] = [
     type: 'string',
   },
   {
-    field: 'operationType',
+    field: 'operationDesc',
     label: 'Charge Name',
     type: 'string',
   },
