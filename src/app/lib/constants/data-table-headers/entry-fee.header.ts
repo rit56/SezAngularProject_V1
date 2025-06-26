@@ -1,6 +1,6 @@
 import { IDataTableHeader } from "../../models";
 
-export const EntryFeeHeaders: IDataTableHeader[] = [
+export const GroundRentCharge: IDataTableHeader[] = [
   {
     field: 'slNo',
     label: 'SL No',

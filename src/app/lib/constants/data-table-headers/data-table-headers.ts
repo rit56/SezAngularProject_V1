@@ -7,7 +7,7 @@ import {CommodityHeaders} from "./commodity.header";
 import {GodownHeaders} from "./godown.header";
 import {PortHeaders} from "./port.header";
 import {OblEntryHeaders} from "./obl-entry.header";
-import {EntryFeeHeaders} from "./entry-fee.header";
+import { GroundRentCharge} from "./entry-fee.header";
 import {HandlingHeaders} from "./handling-header";
 import {InsuranceChargeHeaders} from "./insurance-charge-header";
 import {OverTimeHeaders} from "./over-time-header";
@@ -33,7 +33,7 @@ export const DATA_TABLE_HEADERS = {
     GODOWN: GodownHeaders,
     PORT: PortHeaders,
     CWC_CHARGES: {
-      ENTRY_FEES: EntryFeeHeaders,
+      ENTRY_FEES: GroundRentCharge,
       INSURANCE_CHARGE: InsuranceChargeHeaders,
       OVER_TIME: OverTimeHeaders,
       EXAMINATION: ExaminationHeaders,

@@ -10,14 +10,14 @@ import { AutoCompleteComponent } from 'src/app/components/auto-complete/auto-com
 import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-storage-charge',
+  selector: 'app-misc-charge',
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink, RouterOutlet, AutoCompleteComponent, DataTableComponent, NgbInputDatepicker, ReactiveFormsModule],
-  templateUrl: './storage-charge.component.html',
-  styleUrls: ['./storage-charge.component.scss'],
+  templateUrl: './misc-charge.component.html',
+  styleUrls: ['./misc-charge.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StorageChargeComponent {
+export class MiscChargeComponent {
 apiService = inject(ApiService);
     utilService = inject(UtilService);
     toasterService = inject(ToastService);

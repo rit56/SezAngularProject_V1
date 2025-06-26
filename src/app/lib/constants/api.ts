@@ -42,9 +42,9 @@ export const API = {
       SAVE: "Sez/AddEditPort",
     },
     CWC_CHARGES: {
-      ENTRY_FEES: {
-        LIST: "Sez/GetMstEntryFee",
-        SAVE: "Sez/AddEditMstEntryFee",
+      GROUND_RENT_CHARGE: {
+        LIST: "CWCCharges/GETGroundRentChargeList",
+        SAVE: "CWCCharges/AddGroundRentCharge",
       },
       INSURANCE_CHARGE: {
         LIST: "Sez/GetMstInsurance",

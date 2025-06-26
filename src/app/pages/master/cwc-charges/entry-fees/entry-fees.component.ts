@@ -23,9 +23,12 @@ export class EntryFeesComponent {
   toasterService = inject(ToastService);
 
   readonly headers = DATA_TABLE_HEADERS.MASTER.CWC_CHARGES.ENTRY_FEES
-  readonly apiUrls = API.MASTER.CWC_CHARGES.ENTRY_FEES;
+  readonly apiUrls = API.MASTER.CWC_CHARGES.GROUND_RENT_CHARGE;
   readonly operationTypes = ENTRY_FEE_DATA.operationTypes;
- readonly sizes = HT_CHARGES_DATA.sizes;
+  readonly FCLLCL = ENTRY_FEE_DATA.FCLLCL;
+  readonly containerTypes = ENTRY_FEE_DATA.containerTypes;
+  readonly commodityTypes = ENTRY_FEE_DATA.commodityTypes;
+  readonly sizes = HT_CHARGES_DATA.sizes;
   form!: FormGroup;
   sacList = signal<any[]>([]);
   isViewMode = signal(false);
@@ -55,13 +58,21 @@ export class EntryFeesComponent {
 
   makeForm() {
     this.form = new FormGroup({
-      entryFeeId: new FormControl(0, []),
+      groundRentId: new FormControl(0, []),
       effectiveDate: new FormControl(null, []),
-      sacCodeId: new FormControl(null, []),
-      operationType: new FormControl("", []),
-      ratePerPacket: new FormControl(null, []),
-      minimumRate: new FormControl(null, []),
-      maximumRate: new FormControl(null, []),
+      sacId: new FormControl(996719, []),
+      daysRangeFrom: new FormControl("", []),
+      daysRangeTo: new FormControl(null, []),
+      containerType: new FormControl(null, []),
+      commodityType: new FormControl(null, []),
+       size: new FormControl("", []),
+      fclLcl: new FormControl(null, []),
+      rentAmount: new FormControl(null, []),
+      operationType: new FormControl(null, []),
+      createdBy: new FormControl(0, []),
+      createdOn: new FormControl(new Date(), []),
+      updatedBy: new FormControl(0, []),
+      updatedOn: new FormControl(null, []),
     })
   }
 
