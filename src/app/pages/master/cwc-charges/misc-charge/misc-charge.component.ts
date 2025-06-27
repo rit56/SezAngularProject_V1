@@ -67,13 +67,13 @@ apiService = inject(ApiService);
     }
     makeForm() {
       this.form = new FormGroup({
-        htChargesID: new FormControl(0, []),
+        miscellaneousId: new FormControl(0, []),
         sacCodeId: new FormControl(null, []),
         operationId: new FormControl(null, []),
         effectiveDate: new FormControl(null, []),
         size: new FormControl("0", []),
         rate: new FormControl(null, []),
-       createdBy:new FormControl(null, []),
+       createdBy:new FormControl(1, []),
         createdOn: new FormControl(new Date(), []),
        updatedBy:new FormControl(null, []),
        updatedOn: new FormControl(null, []),
@@ -116,7 +116,7 @@ apiService = inject(ApiService);
         const data = this.makePayload();
         this.apiService.post(this.apiUrls.SAVE, data).subscribe({
           next:() => {
-            this.toasterService.showSuccess("HT Charge saved successfully");
+            this.toasterService.showSuccess("Misc Charge saved successfully");
             this.table.reload();
             this.makeForm();
             this.isSaving.set(false);

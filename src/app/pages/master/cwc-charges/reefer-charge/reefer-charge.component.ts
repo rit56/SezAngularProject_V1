@@ -101,7 +101,7 @@ apiService = inject(ApiService);
         const data = this.makePayload();
         this.apiService.post(this.apiUrls.SAVE, data).subscribe({
           next:() => {
-            this.toasterService.showSuccess("HT Charge saved successfully");
+            this.toasterService.showSuccess("Reefer Charge saved successfully");
             this.table.reload();
             this.makeForm();
             this.isSaving.set(false);
