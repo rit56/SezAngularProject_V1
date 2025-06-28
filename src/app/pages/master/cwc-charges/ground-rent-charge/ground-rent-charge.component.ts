@@ -123,7 +123,7 @@ export class EntryFeesComponent {
       const data = this.makePayload();
       this.apiService.post(this.apiUrls.SAVE, data).subscribe({
         next:() => {
-          this.toasterService.showSuccess("Entry fee saved successfully");
+          this.toasterService.showSuccess("Ground Rent Charge saved successfully");
           this.table.reload();
           this.makeForm();
           this.isSaving.set(false);
