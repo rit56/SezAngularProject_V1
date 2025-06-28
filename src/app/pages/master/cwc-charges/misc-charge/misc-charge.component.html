@@ -20,30 +20,18 @@
     <!-- <div class="col-md-4 col-lg-3 col-sm-6">
       <app-auto-complete keyName="sacCode" keyValue="sacId" label="* SAC Code:" title="List of SAC Code" placeholder="Enter SAC" formControlName="sacCodeId" [options]="sacList()" />
     </div> -->
-   <div class="col-md-4 col-lg-3 col-sm-6">
-      <div class="form-group">
-        <label>* Sac Code:</label>
-        <select formControlName="sacCodeId" class="dropdown">
-         
-          <option *ngFor="let size of sacList()" [value]="size.sacId">{{size.sacCode}}
-          </option>
-        </select>
-        <ng-container *ngIf="hasError('size')">
-          <span class="error">Required field</span>
-        </ng-container>
-      </div>
+  <div class="col-md-5 col-lg-4 col-sm-6">
+      <app-auto-complete keyName="operationDesc" keyValue="operationId" label="* Charge Name:" title="List of Charge Name" placeholder="Enter Charge Name" formControlName="operationId"  [options]="operationList()" (ngModelChange)="getSacCode()"/>
     </div>
- 
 
-   <div class="col-md-4 col-lg-3 col-sm-6">
+    <!-- <div class="col-md-4 col-lg-3 col-sm-6">
+      <app-auto-complete keyName="sacCode" keyValue="sacId" label="* SAC Code:" title="List of SAC Code" placeholder="Enter SAC" formControlName="sacCodeId" [options]="sacList()" />
+    </div> -->
+    <div class="col-md-3 col-lg-2 col-sm-6">
       <div class="form-group">
-        <label>* Charge Name:</label>
-        <select formControlName="operationId" class="dropdown">
-         
-          <option *ngFor="let size of operationList()" [value]="size.operationId">{{size.operationDesc}}
-          </option>
-        </select>
-        <ng-container *ngIf="hasError('size')">
+        <label>* Sac Code :</label>
+        <input formControlName="sacCodeId" placeholder="Sac Code" [(ngModel)]="sacCodeId" type="text" readonly>
+        <ng-container *ngIf="hasError('sacCodeId')">
           <span class="error">Required field</span>
         </ng-container>
       </div>

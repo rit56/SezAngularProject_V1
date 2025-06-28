@@ -36,24 +36,29 @@ apiService = inject(ApiService);
     @ViewChild(DataTableComponent) table!: DataTableComponent;
   
     constructor() {
-        this.getSacList();
+        //this.getSacList();
          this.getOperationList()
       this.setHeaderCallbacks();
       this.makeForm();
     }
- getSacList() {
-    this.apiService.get(API.MASTER.SAC.LIST).subscribe({
-      next: (response: any) => {
-        this.sacList.set(response.data)
-        const sacMap = new Map<string, string>();
-        response.data.forEach((sac: any) => {
-          sacMap.set(sac.sacId, sac.sacCode);
-        })
-        this.sacMap.set(sacMap);
-      }
-    })
+  getSacCode(){
+var sacId = this.form.controls['operationId'].value;
+if(sacId !== null ){
+  this.apiService.get(API.MASTER.SAC.SACCODEBYOPERATION + sacId).subscribe({
+        next: (response: any) => {
+          if(response.status)
+         {
+          //this.sacCodeId = response.data.sacCode;
+          this.form.controls['sacCodeId'].setValue(parseInt(response.data.sacCode)) ;
+         }
+         
+         
+        }
+      })
+}
+   
   }
-   getOperationList() {
+    getOperationList() {
       this.apiService.get(API.MASTER.OPERATION.LIST).subscribe({
         next: (response: any) => {
           this.operationList.set(response.data)
@@ -144,9 +149,9 @@ apiService = inject(ApiService);
         if(header.field === "view") {
           header.callback = this.view.bind(this);
         }
-        if(header.field === "sacCode") {
-          header.valueGetter = this.getSacCodeBySacId.bind(this) ;
-        }
+        // if(header.field === "sacCode") {
+        //   header.valueGetter = this.getSacCodeBySacId.bind(this) ;
+        // }
         //  if(header.field === "operationDesc") {
         //   header.valueGetter = this.getOperationById.bind(this) ;
         // }
