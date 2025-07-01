@@ -17,13 +17,7 @@ export const RefererChargeHeaders: IDataTableHeader[] = [
   //   icon: 'fa fa-pencil',
   //   class: 'text-center',
   // },
-  {
-    field: 'view',
-    label: 'View',
-    type: 'icon',
-    icon: 'fa fa-eye',
-    class: 'text-center',
-  },
+  
   {
     label: 'Effective Date',
     field: 'effectiveDate',
@@ -48,5 +42,12 @@ export const RefererChargeHeaders: IDataTableHeader[] = [
     field: 'rate',
     label: 'Rate',
     type: 'price',
-  }
+  },
+  {
+    field: 'view',
+    label: 'View',
+    type: 'icon',
+    icon: 'fa fa-eye',
+    class: 'text-center',
+  },
 ];

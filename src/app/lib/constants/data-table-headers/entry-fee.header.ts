@@ -16,13 +16,7 @@ export const GroundRentCharge: IDataTableHeader[] = [
   //   icon: 'fa fa-pencil',
   //   class: 'text-center',
   // },
-  {
-    field: 'view',
-    label: 'View',
-    type: 'icon',
-    icon: 'fa fa-eye',
-    class: 'text-center',
-  },
+  
   {
     field: 'effectiveDate',
     label: 'Effective Date',
@@ -52,6 +46,13 @@ export const GroundRentCharge: IDataTableHeader[] = [
     field: 'amount',
     label: 'Charges',
     type: 'price',
+  },
+  {
+    field: 'view',
+    label: 'View',
+    type: 'icon',
+    icon: 'fa fa-eye',
+    class: 'text-center',
   },
  
 ];

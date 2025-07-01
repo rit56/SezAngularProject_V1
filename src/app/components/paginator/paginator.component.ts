@@ -27,7 +27,7 @@ export class PaginatorComponent implements OnChanges {
   @Output() pageSizeChange = new EventEmitter<number>();
 
   pages = signal<number[]>([]);
-  pageSizes = [10, 25, 50, 100];
+  pageSizes = [5,10, 25, 50, 100];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (

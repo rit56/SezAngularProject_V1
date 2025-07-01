@@ -24,7 +24,7 @@ export class DataTableComponent implements OnInit {
   @Input() idKey!: string;
   @Input() url!: string;
 
-  searchCriteria$ = new BehaviorSubject<SearchCriteria>({ page: 1, size: 10, reloadCount: 0});
+  searchCriteria$ = new BehaviorSubject<SearchCriteria>({ page: 1, size: 5, reloadCount: 0});
   records = signal<any[] | null>(null);
   totalPage = signal<number>(0);
   isFetching = signal<boolean>(true)
@@ -43,7 +43,11 @@ export class DataTableComponent implements OnInit {
       switchMap((params) => this.getListData(params))
     ).subscribe({
       next: (response: any) => {
-        this.records.set(response.data);
+        var starindex = (this.searchCriteria$.value.page - 1) * this.searchCriteria$.value.size;
+        var endIndex = starindex + this.searchCriteria$.value.size;
+        var recordsToLoad = response.data?.slice(starindex, endIndex) || [];
+        this.records.set(recordsToLoad);
+        response.totalCount = response.data?.length || 0;
         if(response.totalCount) {
           this.totalPage.set(Math.ceil(response.totalCount / this.searchCriteria$.value.size));
         }
