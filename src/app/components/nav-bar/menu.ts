@@ -22,6 +22,14 @@ export const MENU = [
   //     { label: 'Gate Pass', path: PATHS.UNDER_DEVELOPMENT },
   //   ],
   // },
+   {
+    label: 'Operations',
+    children: [
+      { label: 'Pre Arrival Notification', path: PATHS.OPERATIONS.PREARRIVAL },
+      // { label: 'Gate Exit', path: PATHS.GATE_OPERATION.GATE_EXIT },
+      // { label: 'Gate Pass', path: PATHS.UNDER_DEVELOPMENT },
+    ],
+  },
   // {
   //   label: 'Export',
   //   children: [

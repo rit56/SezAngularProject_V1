@@ -87,11 +87,7 @@ export const MASTER_ROUTES: Route[] = [
       // }
     ]
   },
-  // {
-  //   path: PATHS.MASTER.OPERATION,
-  //   loadComponent: () => import('../..').then((c) => c.OperationsComponent),
-  //   data: { title: "Operation Master" }
-  // },
+  
   // {
   //   path: PATHS.MASTER.PORT,
   //   loadComponent: () => import('../..').then((c) => c.PortComponent),

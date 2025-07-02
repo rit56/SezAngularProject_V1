@@ -1,0 +1,173 @@
+<div class="card">
+  <!--<div class="custom-tab-container mb-3">
+    <ul class="custom-tabs">
+      <li *ngFor="let tab of tabs" routerLinkActive="active" class="custom-tab">
+        <a [routerLink]="[tab.path]">{{ tab.label }}</a>
+      </li> 
+    </ul>
+  </div>
+  <router-outlet /> -->
+
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Pre Arrival No :</label>
+          <input formControlName="preArrivalNo" placeholder="Enter Pre Arrival No" type="number">
+          <ng-container *ngIf="hasError('preArrivalNo')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Date:</label>
+          <div class="position-relative">
+            <input formControlName="date" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker container="body"
+              #effectiveDatePicker="ngbDatepicker" (click)="effectiveDatePicker.open()"
+              (dateSelect)="effectiveDatePicker.close()" />
+            <span (click)="effectiveDatePicker.open()" class="input_icon"><i class="fa fa-calendar"
+                aria-hidden="true"></i></span>
+          </div>
+          <ng-container *ngIf="hasError('date')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Container No :</label>
+          <input formControlName="containerNo" placeholder="Enter Container No" type="number">
+          <ng-container *ngIf="hasError('containerNo')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Size:</label>
+          <select formControlName="size" class="dropdown">
+
+            <option *ngFor="let size of sizes" [value]="size.value">{{size.label}}
+            </option>
+          </select>
+          <ng-container *ngIf="hasError('size')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Types:</label>
+          <select formControlName="type" class="dropdown">
+
+            <option *ngFor="let size of types" [value]="size.value">{{size.label}}
+            </option>
+          </select>
+          <ng-container *ngIf="hasError('type')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* WT(Kg) :</label>
+          <input formControlName="wt" placeholder="Enter Weight" type="number">
+          <ng-container *ngIf="hasError('wt')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Value :</label>
+          <input formControlName="value" placeholder="Enter value" type="number">
+          <ng-container *ngIf="hasError('rate')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <app-auto-complete keyName="operationDesc" keyValue="operationId" label="* Commodity:"
+          title="List of Charge Name" placeholder="Enter Commodity" formControlName="operationId"
+          [options]="operationList()" (ngModelChange)="getSacCode()" />
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Expected Arrival Date:</label>
+          <div class="position-relative">
+            <input formControlName="expectedArrivalDate" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker container="body"
+              #expectedArrivalDate="ngbDatepicker" (click)="expectedArrivalDate.open()"
+              (dateSelect)="expectedArrivalDate.close()" />
+            <span (click)="expectedArrivalDate.open()" class="input_icon"><i class="fa fa-calendar"
+                aria-hidden="true"></i></span>
+          </div>
+          <ng-container *ngIf="hasError('expectedArrivalDate')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="form-group">
+          <label>* Expected Arrival Time:</label>
+          <div class="position-relative">
+            <input formControlName="expectedArrivalTime" placeholder="HH:mm" name="timepicker"
+             type="time" />
+          </div>
+          <ng-container *ngIf="hasError('expectedArrivalTime')">
+            <span class="error">Required field</span>
+          </ng-container>
+        </div>
+      </div>
+      <!-- <div class="col-md-4 col-lg-3 col-sm-6">
+      <app-auto-complete keyName="sacCode" keyValue="sacId" label="* SAC Code:" title="List of SAC Code" placeholder="Enter SAC" formControlName="sacCodeId" [options]="sacList()" />
+    </div> -->
+
+
+    </div>
+
+    <div class="Head_h5 mt10 mb10">
+      <div class="row">
+        <div class="col-md-12">
+
+          <h5>Upload</h5>
+          <div class="row Form_Space_top">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Pack List:</label>
+                <input  formControlName="packListFile" name="PostedFile" type="file" value="">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Check List:</label>
+                <input  formControlName="checkListFile" name="PostedFile" type="file" value="">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label></label>
+              </div>
+              <input type="button" value="Upload" onclick="Upload()" class="btn btn-primary btn-100px mt10"
+                id="btnUpload">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-left gap-2">
+      <ng-container *ngIf="isViewMode(); else formActionButton">
+        <button type="button" class="btn btn-primary form-btn" (click)="setEditMode()">Edit</button>
+      </ng-container>
+      <ng-template #formActionButton>
+        <button [disabled]="isSaving()" type="button" class="btn btn-primary form-btn" (click)="submit()">Save</button>
+      </ng-template>
+      <button type="button" class="btn btn-outline-primary form-btn" (click)="reset()">Reset</button>
+    </div>
+  </form>
+
+  <div class="mt-2 d-flex flex-column gap-2">
+    <app-data-table [headers]="headers" [url]="apiUrls.LIST"></app-data-table>
+  </div>
+</div>
