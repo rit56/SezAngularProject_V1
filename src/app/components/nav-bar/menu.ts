@@ -26,8 +26,14 @@ export const MENU = [
     label: 'Operations',
     children: [
       { label: 'Pre Arrival Notification', path: PATHS.OPERATIONS.PREARRIVAL },
-      // { label: 'Gate Exit', path: PATHS.GATE_OPERATION.GATE_EXIT },
-      // { label: 'Gate Pass', path: PATHS.UNDER_DEVELOPMENT },
+      { label: 'Gate IN', path: PATHS.OPERATIONS.GATE_IN },
+      { label: 'CCIN Entry', path: PATHS.OPERATIONS.CCIN_ENTRY },
+      { label: 'Job Order', path: PATHS.OPERATIONS.JOB_ORDER },
+      { label: 'Custom Examination', path: PATHS.OPERATIONS.CUSTOM_EXAMINATION },
+      { label: 'Invoice', path: PATHS.OPERATIONS.INVOICE },
+      { label: 'Payment Receipt', path: PATHS.OPERATIONS.PAYMENT_RECEIPT },
+      { label: 'Gate Pass', path: PATHS.OPERATIONS.GATE_PASS },
+      { label: 'Gate Exit', path: PATHS.OPERATIONS.GATE_EXIT },
     ],
   },
   // {

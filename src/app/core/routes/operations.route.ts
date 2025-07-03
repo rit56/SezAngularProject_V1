@@ -7,51 +7,46 @@ export const OPERATIONS_ROUTES: Route[] = [
     loadComponent: () => import('../../pages/operations/prearrival-notification/prearrival-notification.component').then((c) => c.PreArrivalNotificationComponent),
     data: { title: "Pre Arrival Notification" }
   },
- 
-  // {
-  //   path: PATHS.MASTER.EXIM_TRADER,
-  //   loadComponent: () => import('../..').then((c) => c.EximTraderComponent),
-  //   data: { title: "Exim Trader Master" }
-  // },
-  // {
-  //   path: PATHS.MASTER.GODOWN,
-  //   loadComponent: () => import('../..').then((c) => c.GodownComponent),
-  //   data: { title: "Godown Master" }
-  // },
+   {
+    path: PATHS.OPERATIONS.GATE_IN,
+    loadComponent: () => import('../../pages/operations/gate-in/gate-in.component').then((c) => c.GateInComponent),
+    data: { title: "Gate In" }
+  },
+   {
+    path: PATHS.OPERATIONS.CCIN_ENTRY,
+    loadComponent: () => import('../../pages/operations/ccin-entry/ccin-entry.component').then((c) => c.CCINComponent),
+    data: { title: "CCIN Entry" }
+  },
   {
-    path: PATHS.MASTER.HT_CHARGES.ROOT,
-    loadComponent: () => import('../..').then((c) => c.HtChargesComponent),
-    data: { title: "H&T Charges" },
-    children: [
-      {
-        path: "", pathMatch: 'full', redirectTo: PATHS.MASTER.HT_CHARGES.ROOT,
-      },
-      // {
-      //   path: PATHS.MASTER.HT_CHARGES.UNLOADING_LOADING,
-      //   loadComponent: () => import('../..').then((c) => c.UnloadingLoadingComponent),
-      //   data: { title: "H&T Charges" },
-      // },
-      // {
-      //   path: PATHS.MASTER.HT_CHARGES.HANDLING,
-      //   loadComponent: () => import('../..').then((c) => c.HandlingComponent),
-      //   data: { title: "H&T Charges" },
-      // },
-      // {
-      //   path: PATHS.MASTER.HT_CHARGES.TRANSPORTATION,
-      //   loadComponent: () => import('../../').then((c) => c.TarnsportationComponent),
-      //   data: { title: "H&T Charges" },
-      // }
-    ]
+    path: PATHS.OPERATIONS.JOB_ORDER,
+    loadComponent: () => import('../../pages/operations/job-order/job-order.component').then((c) => c.JobOrderComponent),
+    data: { title: "Job Order" }
+  },
+  {
+    path: PATHS.OPERATIONS.CUSTOM_EXAMINATION,
+    loadComponent: () => import('../../pages/operations/custom-examination/custom-examination.component').then((c) => c.CustomExaminationComponent),
+    data: { title: "Custom Examination" }
+  },
+  {
+    path: PATHS.OPERATIONS.INVOICE,
+    loadComponent: () => import('../../pages/operations/invoice/invoice.component').then((c) => c.InvoiceComponent),
+    data: { title: "Invoice" }
+  },
+  {
+    path: PATHS.OPERATIONS.PAYMENT_RECEIPT,
+    loadComponent: () => import('../../pages/operations/payment-receipt/payment-receipt.component').then((c) => c.PaymentReceiptComponent),
+    data: { title: "Payment Receipt" }
+  },
+  {
+    path: PATHS.OPERATIONS.GATE_PASS,
+    loadComponent: () => import('../../pages/operations/gate-pass/gate-pass.component').then((c) => c.GatePassComponent),
+    data: { title: "Gate Pass" }
+  },
+  {
+    path: PATHS.OPERATIONS.GATE_EXIT,
+    loadComponent: () => import('../../pages/operations/gate-exit/gate-exit.component').then((c) => c.GateExitComponent),
+    data: { title: "Gate Exit" }
   },
  
-  // {
-  //   path: PATHS.MASTER.PORT,
-  //   loadComponent: () => import('../..').then((c) => c.PortComponent),
-  //   data: { title: "Port Master" }
-  // },
-  // {
-  //   path: PATHS.MASTER.SAC,
-  //   loadComponent: () => import('../..').then((c) => c.SacComponent),
-  //   data: { title: "GST Against SAC" }
-  // },
+  
 ];
